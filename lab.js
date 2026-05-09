@@ -70,7 +70,34 @@
     '</div>'
   );
 
+  if (lab.interactive) {
+    blocks.push('<div class="interactive"><h3>Hands-on · ' + CTF.escapeHtml(lab.interactive.label || lab.interactive.widget) + '</h3>' +
+      '<div id="widget-mount"></div></div>');
+  }
+
   content.innerHTML = blocks.join('');
+
+  // Mount interactive widget if present
+  if (lab.interactive) {
+    const widgetMount = document.getElementById('widget-mount');
+    const widgetFn = window.LAB_WIDGETS && window.LAB_WIDGETS[lab.interactive.widget];
+    if (widgetFn) {
+      widgetFn(widgetMount, lab.interactive.config, {
+        isGod: MODE === 'god',
+        onSolve: () => {
+          if (MODE !== 'ctf') return;
+          const flagInput = document.getElementById('flag-input');
+          const flagSubmit = document.getElementById('flag-submit');
+          if (flagInput && flagSubmit) {
+            flagInput.value = lab.flag;
+            flagSubmit.click();
+          }
+        },
+      });
+    } else {
+      widgetMount.innerHTML = '<p style="color:var(--danger)">unknown widget: ' + CTF.escapeHtml(lab.interactive.widget) + '</p>';
+    }
+  }
 
   // Sidebar: CTF mission OR God walkthrough
   if (MODE === 'ctf') {

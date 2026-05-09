@@ -34,7 +34,7 @@
         </p>
       </div>
       <div class="hub-scorebar" id="scorebar">
-        <span><span class="label">solved</span><span class="value" id="solved-count">0</span><span class="label"> / 33</span></span>
+        <span><span class="label">solved</span><span class="value" id="solved-count">0</span><span class="label"> / 88</span></span>
         <span><span class="label">score</span><span class="value" id="total-score">0</span></span>
         <span><span class="label">time</span><span class="value" id="total-time">0m 00s</span></span>
       </div>
@@ -51,6 +51,7 @@
 
   <script src="ctf.js"></script>
   <script src="labs.js"></script>
+  <script src="labs-handson.js"></script>
   <script>
   (() => {
     const params = new URLSearchParams(location.search);
@@ -75,13 +76,18 @@
       html.push('<div class="module-head"><span class="module-num">// MODULE 0' +
         (mod.num < 10 ? mod.num : mod.num) + '</span><h2>' + mod.title + '</h2></div>');
       if (mod.blurb) html.push('<p>' + mod.blurb + '</p>');
-      html.push('<div class="lab-grid">');
-      mod.labs.forEach((lab) => {
+      const primers = mod.labs.filter((l) => !l.interactive);
+      const handsOn = mod.labs.filter((l) => !!l.interactive);
+
+      function renderCard(lab) {
         const solved = window.CTF && CTF.isCompleted(lab.id);
         const score = window.CTF ? CTF.labScore(lab.id) : 0;
-        html.push(
+        const typeTag = lab.interactive
+          ? '<span class="lab-type handson">HANDS-ON</span>'
+          : '<span class="lab-type primer">PRIMER</span>';
+        return (
           '<a class="lab-card' + (solved ? ' solved' : '') + '" href="lab.html?id=' + lab.id + '&mode=' + MODE + '">' +
-            '<div class="lab-id">// ' + lab.id.toUpperCase() + '</div>' +
+            '<div class="lab-id">// ' + lab.id.toUpperCase() + typeTag + '</div>' +
             '<h3>' + lab.title + '</h3>' +
             '<p class="lab-blurb">' + lab.blurb + '</p>' +
             '<div class="lab-meta">' +
@@ -89,8 +95,20 @@
             '</div>' +
           '</a>'
         );
-      });
-      html.push('</div></section>');
+      }
+      if (primers.length) {
+        html.push('<div class="module-section-title primer">// quick assessments</div>');
+        html.push('<div class="lab-grid">');
+        primers.forEach((l) => html.push(renderCard(l)));
+        html.push('</div>');
+      }
+      if (handsOn.length) {
+        html.push('<div class="module-section-title handson">// hands-on labs</div>');
+        html.push('<div class="lab-grid">');
+        handsOn.forEach((l) => html.push(renderCard(l)));
+        html.push('</div>');
+      }
+      html.push('</section>');
     });
     mount.innerHTML = html.join('');
 
