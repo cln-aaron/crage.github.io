@@ -1,8 +1,9 @@
 # CRAGE Practitioner Labs
 
 Hands-on lab exercises for the **EC-Council CRAGE** (Certified Responsible AI
-Governance &amp; Ethics) class. Eleven modules &times; three scenario-based
-challenges = **33 labs**.
+Governance &amp; Ethics) class. Eleven modules &times; eight challenges =
+**88 labs** &mdash; three scenario primers and five interactive hands-on
+labs per module.
 
 Static site, no build step. Open `index.html` in a browser, or serve the
 directory with any static file server (`python3 -m http.server`).
@@ -43,7 +44,9 @@ directory with any static file server (`python3 -m http.server`).
 | `index.html` | Landing &mdash; mode selector + access-code modal |
 | `app.html` | Hub &mdash; lists all 11 modules / 33 labs, scoreboard |
 | `lab.html` + `lab.js` | Single lab renderer (templates from `labs.js`) |
-| `labs.js` | All 33 lab configs &mdash; scenario, artefacts, challenge, hints, god walkthrough, hashed flags |
+| `labs.js` | 33 primer lab configs &mdash; scenario, artefacts, challenge, hints, god walkthrough, hashed flags |
+| `labs-handson.js` | 55 hands-on lab configs &mdash; each pinned to one of eight widget types, auto-augments `window.LABS` |
+| `widgets.js` | Eight reusable interactive widget types: classify, sortable, checklist, decision_tree, sliders, annotator, policy_builder, terminal |
 | `ctf.js` | Scoring, hint costs, flag verification, session export |
 | `auth.js` | God-mode SHA-256 access-code gate |
 | `styles.css` | Theme |
