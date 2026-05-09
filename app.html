@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRAGE Lab · Hub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">[CRAGE]</span>
+      <span class="title">Practitioner Labs</span>
+      <span class="subtitle">// hub</span>
+    </div>
+    <div class="status">
+      <span class="badge" id="mode-badge">CHALLENGE</span>
+      <button id="export-btn" class="ghost-btn small" title="Download session JSON">EXPORT</button>
+      <button id="reset-btn" class="ghost-btn small" title="Reset all progress">RESET</button>
+      <a href="index.html" class="ghost-btn small">EXIT</a>
+    </div>
+  </header>
+
+  <main class="hub-main">
+
+    <div class="hub-intro">
+      <div>
+        <h1 id="hub-title">Choose a challenge</h1>
+        <p id="hub-blurb">
+          Thirty-three scenario-based challenges across the eleven CRAGE modules.
+          Each lab gives you a real-world artifact (incident report, model card, vendor questionnaire, policy excerpt)
+          and asks you to apply the relevant framework to reach a defensible answer. Submit a flag when you're confident.
+        </p>
+      </div>
+      <div class="hub-scorebar" id="scorebar">
+        <span><span class="label">solved</span><span class="value" id="solved-count">0</span><span class="label"> / 33</span></span>
+        <span><span class="label">score</span><span class="value" id="total-score">0</span></span>
+        <span><span class="label">time</span><span class="value" id="total-time">0m 00s</span></span>
+      </div>
+    </div>
+
+    <div id="modules-mount"></div>
+
+  </main>
+
+  <footer class="footnote">
+    CRAGE Practitioner Labs &middot; aligned to the EC-Council CRAGE module blueprint &middot;
+    <a href="index.html" class="credit-link">change mode</a>
+  </footer>
+
+  <script src="ctf.js"></script>
+  <script src="labs.js"></script>
+  <script>
+  (() => {
+    const params = new URLSearchParams(location.search);
+    const isGod = params.get('mode') === 'god' && sessionStorage.getItem('crage:god-unlock') === 'true';
+    const MODE = isGod ? 'god' : 'ctf';
+    const badge = document.getElementById('mode-badge');
+    badge.textContent = MODE === 'god' ? 'GOD MODE' : 'CHALLENGE';
+    badge.className = 'badge ' + (MODE === 'god' ? 'god' : 'ctf');
+
+    if (MODE === 'god') {
+      document.getElementById('hub-title').textContent = 'God Mode :: instructor view';
+      document.getElementById('hub-blurb').innerHTML =
+        'You are in <strong style="color:var(--gold)">guided walkthrough mode</strong>. ' +
+        'Each lab shows the framework reasoning and the final flag answer. ' +
+        'Use this for live teaching, demo runs, and post-class review.';
+    }
+
+    const mount = document.getElementById('modules-mount');
+    const html = [];
+    LABS.modules.forEach((mod) => {
+      html.push('<section class="module-block">');
+      html.push('<div class="module-head"><span class="module-num">// MODULE 0' +
+        (mod.num < 10 ? mod.num : mod.num) + '</span><h2>' + mod.title + '</h2></div>');
+      if (mod.blurb) html.push('<p>' + mod.blurb + '</p>');
+      html.push('<div class="lab-grid">');
+      mod.labs.forEach((lab) => {
+        const solved = window.CTF && CTF.isCompleted(lab.id);
+        const score = window.CTF ? CTF.labScore(lab.id) : 0;
+        html.push(
+          '<a class="lab-card' + (solved ? ' solved' : '') + '" href="lab.html?id=' + lab.id + '&mode=' + MODE + '">' +
+            '<div class="lab-id">// ' + lab.id.toUpperCase() + '</div>' +
+            '<h3>' + lab.title + '</h3>' +
+            '<p class="lab-blurb">' + lab.blurb + '</p>' +
+            '<div class="lab-meta">' +
+              (solved ? '<span class="check">✓ solved · ' + score + ' pts</span>' : '<span>open</span>') +
+            '</div>' +
+          '</a>'
+        );
+      });
+      html.push('</div></section>');
+    });
+    mount.innerHTML = html.join('');
+
+    function refreshScore() {
+      if (!window.CTF) return;
+      document.getElementById('solved-count').textContent = CTF.completedCount();
+      document.getElementById('total-score').textContent = CTF.totalScore();
+      document.getElementById('total-time').textContent = CTF.fmtTime(CTF.totalTime());
+    }
+    refreshScore();
+
+    document.getElementById('export-btn').addEventListener('click', () => {
+      if (window.CTF) CTF.downloadSession();
+    });
+    document.getElementById('reset-btn').addEventListener('click', () => {
+      if (!confirm('Reset all lab progress? This cannot be undone.')) return;
+      if (window.CTF) CTF.resetAll();
+      location.reload();
+    });
+  })();
+  </script>
+</body>
+</html>
