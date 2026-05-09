@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRAGE Lab · Choose Your Mode</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="landing-body">
+
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <header class="deck-topbar">
+    <div class="deck-brand">
+      <span class="brand-logo">CRAGE<span class="brand-num">_LAB</span><span class="brand-cursor">_</span></span>
+      <span class="deck-brand-tag">CHOOSE YOUR MODE</span>
+    </div>
+  </header>
+
+  <main class="landing-main">
+
+    <div class="landing-hero">
+      <div class="eyebrow">// hands-on labs · responsible AI governance &amp; ethics</div>
+      <h1 class="landing-title">
+        CRAGE <span class="accent">Practitioner</span> Labs
+      </h1>
+      <p class="landing-sub">
+        Thirty-three scenario-based challenges across the eleven CRAGE modules.
+        Apply NIST AI RMF, ISO/IEC 42001, the EU AI Act, and responsible-AI
+        practice to real cases. Two ways to play.
+      </p>
+    </div>
+
+    <div class="mode-grid">
+
+      <a class="mode-card ctf" href="app.html?mode=ctf">
+        <div class="mode-tag">// default</div>
+        <div class="mode-icon">🎯</div>
+        <h2>Challenge Mode</h2>
+        <p class="mode-tagline">capture-the-flag · timed · scored</p>
+        <p class="mode-desc">
+          Each lab is a governance challenge. You get a scenario and an objective &mdash;
+          no walkthrough, no answers. Three optional hints (each costs points).
+          Submit a flag when you've reasoned to the answer; the lab verifies and scores you.
+          Session export at the end.
+        </p>
+        <ul class="mode-bullets">
+          <li>33 challenges across 11 modules</li>
+          <li>3 hints per challenge (decreasing payoff)</li>
+          <li>flag format: <code>crage{...}</code></li>
+          <li>downloadable session JSON</li>
+        </ul>
+        <div class="mode-cta">ENTER CHALLENGE MODE →</div>
+      </a>
+
+      <a class="mode-card god" href="#" id="god-mode-btn">
+        <div class="mode-tag">// instructor</div>
+        <div class="mode-icon">🔓</div>
+        <h2>God Mode</h2>
+        <p class="mode-tagline">guided walkthrough · answers visible · for instructors</p>
+        <p class="mode-desc">
+          Step-by-step walkthrough with reasoning, the right framework citations,
+          and the final answer revealed for each lab. Built for live teaching, post-class
+          review, and instructor prep. Locked behind a 12-digit access code; share it
+          with attendees as needed.
+        </p>
+        <ul class="mode-bullets">
+          <li>full guided sidebar on every lab</li>
+          <li>reasoning + framework citations</li>
+          <li>flag answer pre-revealed</li>
+          <li>requires 12-digit access code</li>
+        </ul>
+        <div class="mode-cta locked">UNLOCK GOD MODE 🔒</div>
+      </a>
+
+    </div>
+
+    <div class="landing-footer-row">
+      <a class="landing-link" href="app.html?mode=ctf">→ skip to challenges</a>
+      <a class="landing-link" href="https://www.eccouncil.org/ai-courses/certified-responsible-ai-governance-ethics-crage/" target="_blank" rel="noopener">↗ about CRAGE</a>
+    </div>
+
+  </main>
+
+  <!-- God Mode access code modal -->
+  <div class="auth-modal" id="auth-modal" hidden>
+    <div class="auth-card">
+      <div class="auth-head">
+        <span class="auth-icon">🔒</span>
+        <span class="auth-title">God Mode :: access code required</span>
+        <button class="auth-close" id="auth-close" title="Close">×</button>
+      </div>
+      <div class="auth-body">
+        <p>Enter the 12-digit access code to unlock the guided walkthrough mode.</p>
+        <div class="auth-input-row">
+          <input type="password" inputmode="numeric" maxlength="12" pattern="[0-9]{12}"
+                 id="auth-input" autocomplete="off" placeholder="••••••••••••" autofocus>
+          <button class="auth-submit" id="auth-submit">UNLOCK</button>
+        </div>
+        <div class="auth-status" id="auth-status"></div>
+        <div class="auth-hint">Access code is shared by the instructor at session start.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footnote">
+    CRAGE Practitioner Labs &middot; aligned to EC-Council CRAGE module blueprint &middot;
+    instructional content for classroom use only
+  </footer>
+
+  <script src="auth.js"></script>
+</body>
+</html>
