@@ -6,9 +6,10 @@
 (() => {
   const PASS_PCT = 70;
   const SETS = {
-    '1': { name: 'Set 1', questions: window.QUESTIONS || [] },
-    '2': { name: 'Set 2', questions: window.QUESTIONS_SET2 || [] },
-    '3': { name: 'Set 3', questions: window.QUESTIONS_SET3 || [] },
+    '1': { name: 'Set 1', gate: 'set1', questions: window.QUESTIONS || [] },
+    '2': { name: 'Set 2', gate: 'set2', questions: window.QUESTIONS_SET2 || [] },
+    '3': { name: 'Set 3', gate: 'set3', questions: window.QUESTIONS_SET3 || [] },
+    '4': { name: 'Set 4', gate: 'set4', questions: window.QUESTIONS_SET4 || [] },
   };
 
   const $ = (s) => document.querySelector(s);
@@ -18,6 +19,7 @@
   const beginSet1Btn = $('#begin-set1-btn');
   const beginSet2Btn = $('#begin-set2-btn');
   const beginSet3Btn = $('#begin-set3-btn');
+  const beginSet4Btn = $('#begin-set4-btn');
   const prevBtn = $('#prev-btn');
   const nextBtn = $('#next-btn');
   const submitBtn = $('#submit-btn');
@@ -196,9 +198,33 @@
   }
 
   // === Bindings ===
-  beginSet1Btn.addEventListener('click', () => beginSet('1'));
-  beginSet2Btn.addEventListener('click', () => beginSet('2'));
-  beginSet3Btn.addEventListener('click', () => beginSet('3'));
+  function gatedBegin(setKey) {
+    const gate = SETS[setKey].gate;
+    if (window.Gates && Gates.isUnlocked(gate)) { beginSet(setKey); return; }
+    if (window.Gates) {
+      Gates.prompt(gate, () => {
+        refreshLocks();
+        beginSet(setKey);
+      });
+    } else {
+      beginSet(setKey);
+    }
+  }
+  function refreshLocks() {
+    Object.keys(SETS).forEach((k) => {
+      const gate = SETS[k].gate;
+      const lockEl = document.getElementById(gate + '-lock');
+      if (lockEl && window.Gates && Gates.isUnlocked(gate)) {
+        lockEl.textContent = '🔓';
+        lockEl.classList.add('unlocked');
+      }
+    });
+  }
+  refreshLocks();
+  beginSet1Btn.addEventListener('click', () => gatedBegin('1'));
+  beginSet2Btn.addEventListener('click', () => gatedBegin('2'));
+  beginSet3Btn.addEventListener('click', () => gatedBegin('3'));
+  beginSet4Btn.addEventListener('click', () => gatedBegin('4'));
   prevBtn.addEventListener('click', () => {
     if (idx > 0) { idx--; renderQuestion(); }
   });
