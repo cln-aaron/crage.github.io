@@ -883,7 +883,10 @@ code { font-family: var(--mono); }
   display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem;
   margin: 1.4rem 0 1rem;
 }
-@media (max-width: 720px) { .set-grid { grid-template-columns: 1fr; } }
+.set-grid.three { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 720px) {
+  .set-grid, .set-grid.three { grid-template-columns: 1fr; }
+}
 .set-card {
   display: flex; align-items: center; justify-content: center;
   padding: 1.6rem 1.2rem; background: var(--panel-2);
