@@ -5,13 +5,17 @@
 // review.
 (() => {
   const PASS_PCT = 70;
-  const QS = window.QUESTIONS || [];
+  const SETS = {
+    '1': { name: 'Set 1', questions: window.QUESTIONS || [] },
+    '2': { name: 'Set 2', questions: window.QUESTIONS_SET2 || [] },
+  };
 
   const $ = (s) => document.querySelector(s);
   const pre = $('#pre-exam');
   const qScreen = $('#question-screen');
   const rScreen = $('#result-screen');
-  const beginBtn = $('#begin-btn');
+  const beginSet1Btn = $('#begin-set1-btn');
+  const beginSet2Btn = $('#begin-set2-btn');
   const prevBtn = $('#prev-btn');
   const nextBtn = $('#next-btn');
   const submitBtn = $('#submit-btn');
@@ -23,8 +27,11 @@
   const examTimer = $('#exam-timer');
   const examProgress = $('#exam-progress');
   const retakeBtn = $('#retake-btn');
+  const examModeBadge = $('#exam-mode-badge');
 
-  let answers = new Array(QS.length).fill(null);
+  let activeSet = '1';
+  let QS = SETS['1'].questions;
+  let answers = [];
   let idx = 0;
   let startTime = 0;
   let timerHandle = null;
@@ -168,8 +175,14 @@
   }
   window.addEventListener('beforeunload', beforeUnload);
 
-  // === Bindings ===
-  beginBtn.addEventListener('click', () => {
+  function beginSet(setKey) {
+    activeSet = setKey;
+    QS = SETS[setKey].questions;
+    if (!QS || QS.length === 0) {
+      alert('That set has no questions loaded.');
+      return;
+    }
+    examModeBadge.textContent = 'EXAM · ' + SETS[setKey].name;
     pre.hidden = true;
     qScreen.hidden = false;
     rScreen.hidden = true;
@@ -178,7 +191,11 @@
     renderQuestion();
     startTimer();
     disableSelection();
-  });
+  }
+
+  // === Bindings ===
+  beginSet1Btn.addEventListener('click', () => beginSet('1'));
+  beginSet2Btn.addEventListener('click', () => beginSet('2'));
   prevBtn.addEventListener('click', () => {
     if (idx > 0) { idx--; renderQuestion(); }
   });
@@ -199,8 +216,9 @@
     rScreen.hidden = true;
     pre.hidden = false;
     examTimer.textContent = '00:00';
-    examProgress.textContent = '0 / ' + QS.length;
+    examProgress.textContent = '— / —';
+    examModeBadge.textContent = 'EXAM';
   });
 
-  examProgress.textContent = '0 / ' + QS.length;
+  examProgress.textContent = '— / —';
 })();
