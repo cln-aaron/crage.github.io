@@ -8,6 +8,7 @@
   const SETS = {
     '1': { name: 'Set 1', questions: window.QUESTIONS || [] },
     '2': { name: 'Set 2', questions: window.QUESTIONS_SET2 || [] },
+    '3': { name: 'Set 3', questions: window.QUESTIONS_SET3 || [] },
   };
 
   const $ = (s) => document.querySelector(s);
@@ -16,6 +17,7 @@
   const rScreen = $('#result-screen');
   const beginSet1Btn = $('#begin-set1-btn');
   const beginSet2Btn = $('#begin-set2-btn');
+  const beginSet3Btn = $('#begin-set3-btn');
   const prevBtn = $('#prev-btn');
   const nextBtn = $('#next-btn');
   const submitBtn = $('#submit-btn');
@@ -196,6 +198,7 @@
   // === Bindings ===
   beginSet1Btn.addEventListener('click', () => beginSet('1'));
   beginSet2Btn.addEventListener('click', () => beginSet('2'));
+  beginSet3Btn.addEventListener('click', () => beginSet('3'));
   prevBtn.addEventListener('click', () => {
     if (idx > 0) { idx--; renderQuestion(); }
   });
