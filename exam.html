@@ -26,30 +26,16 @@
     <!-- Pre-exam screen -->
     <section id="pre-exam" class="exam-card">
       <h1>CRAGE · Practice Exam</h1>
-      <p>Multiple-choice practice exam covering all eleven CRAGE modules. Single attempt — no question review afterwards. You will see a final score and pass/fail decision once you submit.</p>
 
       <div class="set-grid">
-        <div class="set-card" id="set1-card">
-          <div class="set-tag">// practice set 1</div>
-          <h2>Set 1 · 100 questions</h2>
-          <p>The standard practice exam &mdash; 100 questions across the eleven CRAGE modules.</p>
-          <button class="ghost-btn check" id="begin-set1-btn">BEGIN SET 1 →</button>
-        </div>
-        <div class="set-card" id="set2-card">
-          <div class="set-tag">// practice set 2</div>
-          <h2>Set 2 · 200 questions</h2>
-          <p>An extended practice exam &mdash; 200 questions with broader coverage of frameworks, attacks, privacy techniques, and lifecycle phases.</p>
-          <button class="ghost-btn check" id="begin-set2-btn">BEGIN SET 2 →</button>
-        </div>
+        <button class="set-card" id="begin-set1-btn">
+          <h2>Set 1</h2>
+        </button>
+        <button class="set-card" id="begin-set2-btn">
+          <h2>Set 2</h2>
+        </button>
       </div>
 
-      <ul class="exam-rules">
-        <li>Timer starts the moment you click <strong>Begin</strong>.</li>
-        <li>Copy, paste, right-click, and text selection are <strong>disabled</strong>.</li>
-        <li>Use <strong>Previous</strong> / <strong>Next</strong> to move between questions; you can change an answer at any point before submitting.</li>
-        <li>Click <strong>Submit Exam</strong> on the last question to finalise. You cannot resume after submitting.</li>
-        <li>Pass mark: <strong>70%</strong>.</li>
-      </ul>
       <div class="exam-actions">
         <a class="ghost-btn" href="index.html">cancel</a>
       </div>
@@ -103,7 +89,7 @@
   </main>
 
   <footer class="footnote">
-    CRAGE Practice Exam &middot; <span id="exam-foot">aligned to the EC-Council CRAGE module blueprint</span>
+    &copy; <a class="credit-link" href="https://www.linkedin.com/in/aaronangsg/" target="_blank" rel="noopener">Aaron Ang</a>
   </footer>
 
   <script src="questions.js"></script>
