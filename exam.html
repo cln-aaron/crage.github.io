@@ -12,12 +12,12 @@
     <div class="brand">
       <span class="logo">[CRAGE]</span>
       <span class="title">Exam Practice</span>
-      <span class="subtitle" id="exam-sub">// 100 questions · single-attempt</span>
+      <span class="subtitle" id="exam-sub">// pick a practice set · single-attempt</span>
     </div>
     <div class="status">
       <span class="badge" id="exam-mode-badge">EXAM</span>
       <span class="exam-timer" id="exam-timer">00:00</span>
-      <span class="exam-progress" id="exam-progress">0 / 100</span>
+      <span class="exam-progress" id="exam-progress">— / —</span>
     </div>
   </header>
 
@@ -26,7 +26,23 @@
     <!-- Pre-exam screen -->
     <section id="pre-exam" class="exam-card">
       <h1>CRAGE · Practice Exam</h1>
-      <p>100 multiple-choice questions across the eleven CRAGE modules. Single attempt — no question review afterwards. You will see a final score and pass/fail decision once you submit.</p>
+      <p>Multiple-choice practice exam covering all eleven CRAGE modules. Single attempt — no question review afterwards. You will see a final score and pass/fail decision once you submit.</p>
+
+      <div class="set-grid">
+        <div class="set-card" id="set1-card">
+          <div class="set-tag">// practice set 1</div>
+          <h2>Set 1 · 100 questions</h2>
+          <p>The standard practice exam &mdash; 100 questions across the eleven CRAGE modules.</p>
+          <button class="ghost-btn check" id="begin-set1-btn">BEGIN SET 1 →</button>
+        </div>
+        <div class="set-card" id="set2-card">
+          <div class="set-tag">// practice set 2</div>
+          <h2>Set 2 · 200 questions</h2>
+          <p>An extended practice exam &mdash; 200 questions with broader coverage of frameworks, attacks, privacy techniques, and lifecycle phases.</p>
+          <button class="ghost-btn check" id="begin-set2-btn">BEGIN SET 2 →</button>
+        </div>
+      </div>
+
       <ul class="exam-rules">
         <li>Timer starts the moment you click <strong>Begin</strong>.</li>
         <li>Copy, paste, right-click, and text selection are <strong>disabled</strong>.</li>
@@ -35,7 +51,6 @@
         <li>Pass mark: <strong>70%</strong>.</li>
       </ul>
       <div class="exam-actions">
-        <button class="ghost-btn check" id="begin-btn">BEGIN EXAM →</button>
         <a class="ghost-btn" href="index.html">cancel</a>
       </div>
     </section>
@@ -92,6 +107,7 @@
   </footer>
 
   <script src="questions.js"></script>
+  <script src="questions2.js"></script>
   <script src="exam.js"></script>
 </body>
 </html>
