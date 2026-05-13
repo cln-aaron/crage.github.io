@@ -13,7 +13,6 @@
   const sidebar = document.getElementById('sidebar');
   const content = document.getElementById('content');
   const modeBadge = document.getElementById('mode-badge');
-  const labFoot = document.getElementById('lab-foot');
   const hubLink = document.getElementById('hub-link');
   hubLink.href = 'app.html?mode=' + MODE;
 
@@ -27,12 +26,10 @@
     return;
   }
 
-  // Title bar + footer
+  // Title bar
   document.title = 'CRAGE Lab · ' + lab.id.toUpperCase() + ' · ' + lab.title;
   titleBar.textContent = lab.title;
   subBar.textContent = '// Module ' + lab.module + ' · ' + lab.id.toUpperCase();
-  labFoot.innerHTML = 'Module ' + lab.module + ' · ' + lab.title +
-    ' &middot; <a href="app.html?mode=' + MODE + '" class="credit-link">back to hub</a>';
 
   // Prev/next nav within module
   const siblings = (LABS.byModule[lab.module] || []).slice().sort((a, b) => a.idx - b.idx);
