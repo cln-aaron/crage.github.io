@@ -1075,7 +1075,7 @@ A: Capable engineer. The team is leaning toward a {{b5}} for the role's pace.`,
       items: [
         { id: "b1", text: "Probe API to fingerprint base model + version" },
         { id: "b2", text: "Enumerate exposed model endpoints" },
-        { id: "b3", text: "Reuse stolen API key from public Github commit" },
+        { id: "b3", text: "Reuse stolen API key from public source-repo commit" },
         { id: "b4", text: "Spear-phish ML engineer's HF token" },
         { id: "b5", text: "Crafted jailbreak prompt to override system rules" },
         { id: "b6", text: "Indirect prompt injection in retrieved doc" },
