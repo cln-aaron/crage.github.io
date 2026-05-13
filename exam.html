@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRAGE · Exam Practice</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="exam-body">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">[CRAGE]</span>
+      <span class="title">Exam Practice</span>
+      <span class="subtitle" id="exam-sub">// 100 questions · single-attempt</span>
+    </div>
+    <div class="status">
+      <span class="badge" id="exam-mode-badge">EXAM</span>
+      <span class="exam-timer" id="exam-timer">00:00</span>
+      <span class="exam-progress" id="exam-progress">0 / 100</span>
+    </div>
+  </header>
+
+  <main class="exam-main" id="exam-main">
+
+    <!-- Pre-exam screen -->
+    <section id="pre-exam" class="exam-card">
+      <h1>CRAGE · Practice Exam</h1>
+      <p>100 multiple-choice questions across the eleven CRAGE modules. Single attempt — no question review afterwards. You will see a final score and pass/fail decision once you submit.</p>
+      <ul class="exam-rules">
+        <li>Timer starts the moment you click <strong>Begin</strong>.</li>
+        <li>Copy, paste, right-click, and text selection are <strong>disabled</strong>.</li>
+        <li>Use <strong>Previous</strong> / <strong>Next</strong> to move between questions; you can change an answer at any point before submitting.</li>
+        <li>Click <strong>Submit Exam</strong> on the last question to finalise. You cannot resume after submitting.</li>
+        <li>Pass mark: <strong>70%</strong>.</li>
+      </ul>
+      <div class="exam-actions">
+        <button class="ghost-btn check" id="begin-btn">BEGIN EXAM →</button>
+        <a class="ghost-btn" href="index.html">cancel</a>
+      </div>
+    </section>
+
+    <!-- Question screen -->
+    <section id="question-screen" class="exam-card" hidden>
+      <div class="question-head">
+        <div class="question-num" id="question-num">Question 1 of 100</div>
+        <div class="question-topic" id="question-topic"></div>
+      </div>
+      <div class="question-body" id="question-body"></div>
+      <div class="question-options" id="question-options"></div>
+      <div class="question-nav">
+        <button class="ghost-btn" id="prev-btn">← Previous</button>
+        <span class="question-jump"><span id="answered-count">0</span> answered</span>
+        <button class="ghost-btn check" id="next-btn">Next →</button>
+        <button class="ghost-btn submit" id="submit-btn" hidden>SUBMIT EXAM</button>
+      </div>
+    </section>
+
+    <!-- Result screen -->
+    <section id="result-screen" class="exam-card" hidden>
+      <div id="result-banner" class="result-banner"></div>
+      <h1 id="result-title">Your Score</h1>
+      <div class="result-grid">
+        <div class="result-stat">
+          <div class="result-label">Score</div>
+          <div class="result-value" id="result-score">0 / 100</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-label">Percentage</div>
+          <div class="result-value" id="result-pct">0%</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-label">Time taken</div>
+          <div class="result-value" id="result-time">0m 00s</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-label">Verdict</div>
+          <div class="result-value" id="result-verdict">—</div>
+        </div>
+      </div>
+      <p class="result-note">Per-question review is not provided. Re-take the exam to practise again.</p>
+      <div class="exam-actions">
+        <button class="ghost-btn" id="retake-btn">RETAKE</button>
+        <a class="ghost-btn" href="index.html">EXIT</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footnote">
+    CRAGE Practice Exam &middot; <span id="exam-foot">aligned to the EC-Council CRAGE module blueprint</span>
+  </footer>
+
+  <script src="questions.js"></script>
+  <script src="exam.js"></script>
+</body>
+</html>
