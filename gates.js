@@ -9,7 +9,8 @@
 (() => {
   const EXPIRY_EPOCH_MS = 1778947140000; // Sat 16 May 2026 23:59 SGT
   const GATES = {
-    challenge: { hash: '57c8e0bf674c21abd8a4a0d16a3808ba4d854d6777e0d5502590c96b82b3b04a', label: 'Challenge Mode' },
+    challenge: { hash: '57c8e0bf674c21abd8a4a0d16a3808ba4d854d6777e0d5502590c96b82b3b04a', label: 'Challenge Mode',
+                 windowSGT: { start: 9, end: 18 } /* 9 AM – 6 PM SGT (UTC+8) */ },
     set1:      { hash: '77eba9f4e5e2a93ad80c7257208d463ceaf6398f903f304ee154ce0b1f9be451', label: 'Practice Set 1' },
     set2:      { hash: 'cd48ed034d08cfa54f29f57cd51d2221596d9bb891ed578474c460ba6612f579', label: 'Practice Set 2' },
     set3:      { hash: '2afd3b7c5bcd1c012c4058eb2308917d9ef444b3ee9f7c3913c1c7eb4e42199e', label: 'Practice Set 3' },
@@ -27,6 +28,21 @@
   }
 
   function isExpired() { return Date.now() > EXPIRY_EPOCH_MS; }
+
+  // Current hour in Singapore Time (UTC+8, no DST).
+  function currentSGTHour() {
+    const sgtMs = Date.now() + 8 * 3600 * 1000;
+    return new Date(sgtMs).getUTCHours();
+  }
+  // Gates may optionally restrict access to a time-of-day window (SGT).
+  // Returns true when no window is configured, or when current SGT hour
+  // is within [start, end). e.g. start=9, end=18 → 09:00–17:59 SGT.
+  function isInWindow(id) {
+    const g = GATES[id];
+    if (!g || !g.windowSGT) return true;
+    const h = currentSGTHour();
+    return h >= g.windowSGT.start && h < g.windowSGT.end;
+  }
 
   function isUnlocked(id) {
     if (isExpired()) return false;
@@ -91,6 +107,13 @@
       status.textContent = '✗ access codes expired (Sat 16 May 23:59 SGT).';
       status.className = 'auth-status danger';
       submit.disabled = true;
+    } else if (!isInWindow(id)) {
+      const w = GATES[id].windowSGT;
+      const fmt = (h) => (h < 10 ? '0' : '') + h + ':00';
+      status.textContent = '✗ access window closed. ' + GATES[id].label +
+        ' is only available ' + fmt(w.start) + '–' + fmt(w.end) + ' SGT.';
+      status.className = 'auth-status danger';
+      submit.disabled = true;
     }
 
     modal.hidden = false;
@@ -113,6 +136,13 @@
     async function tryUnlock() {
       if (isExpired()) {
         status.textContent = '✗ access codes expired.';
+        status.className = 'auth-status danger';
+        return;
+      }
+      if (!isInWindow(id)) {
+        const w = GATES[id].windowSGT;
+        const fmt = (h) => (h < 10 ? '0' : '') + h + ':00';
+        status.textContent = '✗ access window closed (' + fmt(w.start) + '–' + fmt(w.end) + ' SGT).';
         status.className = 'auth-status danger';
         return;
       }
@@ -162,6 +192,8 @@
   window.Gates = {
     isUnlocked,
     isExpired,
+    isInWindow,
+    currentSGTHour,
     prompt,
     EXPIRY_EPOCH_MS,
   };
