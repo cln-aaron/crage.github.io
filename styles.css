@@ -887,11 +887,12 @@ code { font-family: var(--mono); }
 }
 .set-grid.three { grid-template-columns: repeat(3, 1fr); }
 .set-grid.four { grid-template-columns: repeat(4, 1fr); }
+.set-grid.six { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 980px) {
-  .set-grid.four { grid-template-columns: repeat(2, 1fr); }
+  .set-grid.four, .set-grid.six { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 720px) {
-  .set-grid, .set-grid.three, .set-grid.four { grid-template-columns: 1fr; }
+  .set-grid, .set-grid.three, .set-grid.four, .set-grid.six { grid-template-columns: 1fr; }
 }
 .set-card { position: relative; flex-direction: column; gap: 0.5rem; }
 .set-lock {
