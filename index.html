@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CRAGE Lab · Choose Your Mode</title>
+  <title>CRAGE Masterclass Portal · by Aaron Ang</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="landing-body">
@@ -12,40 +12,82 @@
 
   <header class="deck-topbar">
     <div class="deck-brand">
-      <span class="brand-logo">CRAGE<span class="brand-num">_LAB</span><span class="brand-cursor">_</span></span>
-      <span class="deck-brand-tag">CHOOSE YOUR MODE</span>
+      <span class="brand-logo">CRAGE<span class="brand-num">_MASTERCLASS</span><span class="brand-cursor">_</span></span>
+      <span class="deck-brand-tag">PORTAL</span>
     </div>
+    <a class="li-badge" href="https://www.linkedin.com/in/aaronangsg/" target="_blank" rel="noopener" title="Aaron Ang on LinkedIn">
+      <svg class="li-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+      <span class="li-text"><span class="li-by">by</span> Aaron Ang</span>
+    </a>
   </header>
 
   <main class="landing-main">
 
     <div class="landing-hero">
       <h1 class="landing-title">
-        CRAGE <span class="accent">Practitioner</span> Labs
+        CRAGE <span class="accent">Masterclass</span> Portal
       </h1>
+      <p class="landing-sub">Certified Responsible AI Governance &amp; Ethics &mdash; your full learning journey, start to finish.</p>
     </div>
 
-    <div class="mode-grid three">
+    <!-- ===== Category 1 · Pre-Class Questionnaire ===== -->
+    <section class="cat-block">
+      <div class="cat-head">
+        <span class="cat-num">01</span>
+        <h2 class="cat-title">Pre-Class Questionnaire</h2>
+        <span class="cat-tag">// start here</span>
+      </div>
+      <p class="cat-desc">Before the masterclass, tell the trainer about your background and experience so the sessions can be pitched at the right depth.</p>
+      <div class="mode-grid one">
+        <a class="mode-card quiz" href="questionnaire.html">
+          <div class="mode-icon">🧭</div>
+          <h2>Pre-Class Questionnaire</h2>
+          <div class="mode-cta">BEGIN &rarr;</div>
+        </a>
+      </div>
+    </section>
 
-      <a class="mode-card ctf" href="#" id="challenge-mode-btn">
-        <div class="mode-icon">🎯</div>
-        <h2>Challenge Mode</h2>
-        <div class="mode-cta locked" id="challenge-cta">UNLOCK 🔒</div>
-      </a>
+    <!-- ===== Category 2 · Exam Practice ===== -->
+    <section class="cat-block">
+      <div class="cat-head">
+        <span class="cat-num">02</span>
+        <h2 class="cat-title">Exam Practice</h2>
+        <span class="cat-tag">// test yourself</span>
+      </div>
+      <p class="cat-desc">Timed, single-attempt CRAGE-style practice exams across all eleven modules.</p>
+      <div class="mode-grid one">
+        <a class="mode-card exam" href="exam.html">
+          <div class="mode-icon">📝</div>
+          <h2>Exam Practice</h2>
+          <div class="mode-cta">START &rarr;</div>
+        </a>
+      </div>
+    </section>
 
-      <a class="mode-card god" href="#" id="god-mode-btn">
-        <div class="mode-icon">🔓</div>
-        <h2>God Mode</h2>
-        <div class="mode-cta locked">UNLOCK 🔒</div>
-      </a>
+    <!-- ===== Category 3 · CRAGE Labs ===== -->
+    <section class="cat-block">
+      <div class="cat-head">
+        <span class="cat-num">03</span>
+        <h2 class="cat-title">CRAGE Labs</h2>
+        <span class="cat-tag">// hands-on</span>
+      </div>
+      <p class="cat-desc">Scenario-based governance challenges and interactive hands-on labs across the eleven CRAGE modules.</p>
+      <div class="mode-grid two">
 
-      <a class="mode-card exam" href="exam.html">
-        <div class="mode-icon">📝</div>
-        <h2>Exam Practice</h2>
-        <div class="mode-cta">START &rarr;</div>
-      </a>
+        <a class="mode-card ctf" href="#" id="challenge-mode-btn">
+          <div class="mode-icon">🎯</div>
+          <h2>Challenge Mode</h2>
+          <div class="mode-cta locked" id="challenge-cta">UNLOCK 🔒</div>
+        </a>
 
-    </div>
+        <a class="mode-card god" href="#" id="god-mode-btn">
+          <div class="mode-icon">🔓</div>
+          <h2>God Mode</h2>
+          <div class="mode-cta locked">UNLOCK 🔒</div>
+        </a>
+
+      </div>
+    </section>
 
   </main>
 
@@ -71,7 +113,7 @@
   </div>
 
   <footer class="footnote">
-    &copy; <a class="credit-link" href="https://www.linkedin.com/in/aaronangsg/" target="_blank" rel="noopener">Aaron Ang</a>
+    CRAGE Masterclass Portal &middot; &copy; <a class="credit-link" href="https://www.linkedin.com/in/aaronangsg/" target="_blank" rel="noopener">Aaron Ang</a>
   </footer>
 
   <script src="gates.js"></script>
