@@ -31,15 +31,12 @@
     </div>
 
     <!--
-      ========================= INSTRUCTOR SETUP =========================
-      This form is powered by Formspree. Replace YOUR_FORM_ID below with
-      your own Formspree form ID (create a form at https://formspree.io
-      and copy the endpoint, e.g. https://formspree.io/f/xayzwabc).
-      Until you do, submissions will not be delivered.
-      ====================================================================
+      Powered by Formspree. Submissions are delivered to the form owner's
+      Formspree inbox. To change the destination, replace the form ID in the
+      action URL below.
     -->
     <form id="preclass-form" class="qform"
-          action="https://formspree.io/f/YOUR_FORM_ID"
+          action="https://formspree.io/f/mpqedpej"
           method="POST">
 
       <input type="hidden" name="_subject" value="CRAGE Masterclass · Pre-Class Questionnaire submission">
@@ -198,12 +195,6 @@
     const form = document.getElementById('preclass-form');
     const status = document.getElementById('qform-status');
     form.addEventListener('submit', async (e) => {
-      if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
-        e.preventDefault();
-        status.textContent = '⚠ This form is not yet connected. Instructor: set your Formspree form ID in questionnaire.html.';
-        status.className = 'qform-status warn';
-        return;
-      }
       e.preventDefault();
       status.textContent = 'Sending…';
       status.className = 'qform-status info';
