@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRAGE Masterclass · Pre-Class Knowledge Check</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="exam-body">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">[CRAGE]</span>
+      <span class="title">Pre-Class Knowledge Check</span>
+      <span class="subtitle" id="quiz-sub">// 60 questions · 60 minutes</span>
+    </div>
+    <div class="status">
+      <span class="badge" id="quiz-mode-badge">PRE-CLASS</span>
+      <span class="exam-timer" id="quiz-timer">60:00</span>
+      <span class="exam-progress" id="quiz-progress">— / 60</span>
+    </div>
+  </header>
+
+  <main class="exam-main" id="quiz-main">
+
+    <!-- ===== Pre-quiz screen ===== -->
+    <section id="pre-quiz" class="exam-card">
+      <h1>CRAGE Pre-Class Knowledge Check</h1>
+      <p>
+        Sixty multiple-choice questions covering all eleven CRAGE modules.
+        Your results help the trainer pitch the masterclass at the right depth — you will see your domain-by-domain
+        breakdown at the end but <strong>not</strong> which individual answers were right or wrong.
+      </p>
+      <ul class="exam-rules">
+        <li>You have <strong>60 minutes</strong> from the moment you click <strong>Begin</strong>. The exam auto-submits when time runs out.</li>
+        <li>You can move freely between questions using <strong>Previous</strong> / <strong>Next</strong>, jump via the question palette, and change any answer until you submit.</li>
+        <li>Copy, paste, right-click, and text selection are <strong>disabled</strong> during the quiz.</li>
+        <li>Your final report (per-module scores and weak domains) is automatically delivered to your trainer.</li>
+      </ul>
+
+      <div class="qsection" style="margin-top:1.2rem">
+        <legend>Your details</legend>
+        <div class="qfield">
+          <label for="quiz-name">Full name <span class="req">*</span></label>
+          <input type="text" id="quiz-name" autocomplete="name" placeholder="Your name">
+        </div>
+        <div class="qfield">
+          <label for="quiz-email">Email address <span class="req">*</span></label>
+          <input type="email" id="quiz-email" autocomplete="email" placeholder="you@example.com">
+        </div>
+      </div>
+
+      <div class="exam-actions" style="margin-top:1.2rem">
+        <button class="ghost-btn check" id="begin-btn">BEGIN QUIZ &rarr;</button>
+        <a class="ghost-btn" href="index.html">cancel</a>
+      </div>
+      <div class="qform-status" id="pre-status"></div>
+    </section>
+
+    <!-- ===== Question screen ===== -->
+    <section id="question-screen" class="exam-card" hidden>
+      <div class="question-head">
+        <div class="question-num" id="question-num">Question 1 of 60</div>
+        <div class="question-topic" id="question-module"></div>
+      </div>
+      <div class="question-body" id="question-body"></div>
+      <div class="question-options" id="question-options"></div>
+
+      <div class="palette-wrap">
+        <div class="palette-label">// jump to question</div>
+        <div class="palette" id="palette"></div>
+      </div>
+
+      <div class="question-nav">
+        <button class="ghost-btn" id="prev-btn">← Previous</button>
+        <span class="question-jump"><span id="answered-count">0</span> of 60 answered</span>
+        <button class="ghost-btn check" id="next-btn">Next →</button>
+        <button class="ghost-btn submit" id="submit-btn">SUBMIT QUIZ</button>
+      </div>
+    </section>
+
+    <!-- ===== Result screen ===== -->
+    <section id="result-screen" class="exam-card" hidden>
+      <div id="result-banner" class="result-banner"></div>
+      <h1>Your Pre-Class Snapshot</h1>
+      <p class="result-note">Per-question feedback is intentionally not shown. The trainer uses this snapshot to calibrate the depth of each module in the masterclass.</p>
+
+      <div class="result-grid">
+        <div class="result-stat">
+          <div class="result-label">Total</div>
+          <div class="result-value" id="result-score">0 / 60</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-label">Percentage</div>
+          <div class="result-value" id="result-pct">0%</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-label">Time taken</div>
+          <div class="result-value" id="result-time">0m 00s</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-label">Weak domains</div>
+          <div class="result-value" id="result-weakcount">—</div>
+        </div>
+      </div>
+
+      <h2 class="domain-h">Domain breakdown</h2>
+      <div class="domain-list" id="domain-list"></div>
+
+      <div class="report-status" id="report-status"></div>
+      <div class="exam-actions">
+        <a class="ghost-btn" href="index.html">EXIT</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footnote">
+    CRAGE Masterclass Portal &middot; &copy; <a class="credit-link" href="https://www.linkedin.com/in/aaronangsg/" target="_blank" rel="noopener">Aaron Ang</a>
+  </footer>
+
+  <script src="gates.js"></script>
+  <script src="questions_preclass.js"></script>
+  <script src="preclass.js"></script>
+</body>
+</html>

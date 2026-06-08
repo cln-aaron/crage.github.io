@@ -17,6 +17,7 @@
     set4:      { hash: 'ac66d35e29b04678aa5d58328390e0b06547931fcb16ba6c02b732c4e01f150f', label: 'Practice Set 4' },
     set5:      { hash: 'd6e117a54f74fb34fe62a35abad6ad270d0a8d5dc5a261f562316e4956d36e01', label: 'Practice Set 5' },
     set6:      { hash: '44df122893b47a895ab651c128d68c63344b64211c10a0b908861fcc41566d91', label: 'Practice Set 6' },
+    preclass:  { hash: '3e594c57af8edc5172756283f9da46b46b7c9a48a6bfdeef9b84286abf0e76b8', label: 'Pre-Class Knowledge Check' },
   };
   const STORAGE_PREFIX = 'crage:gate:';
 

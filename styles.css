@@ -173,6 +173,11 @@ code { font-family: var(--mono); }
 .mode-card.quiz h2 { color: var(--info); }
 .mode-card.quiz .mode-cta { color: var(--info); }
 
+/* knowledge-check card accent (gold) */
+.mode-card.check:hover { border-color: var(--gold); }
+.mode-card.check h2 { color: var(--gold); }
+.mode-card.check .mode-cta { color: var(--gold); }
+
 /* ===== LinkedIn badge ===== */
 .li-badge {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -1048,3 +1053,70 @@ code { font-family: var(--mono); }
 .qform-status.ok { color: var(--accent-2); }
 .qform-status.warn { color: var(--warn); }
 .qform-status.danger { color: var(--danger); }
+
+/* ===== Pre-Class Knowledge Check additions ===== */
+.exam-timer.warn { color: var(--warn); border-color: rgba(255,180,84,0.4); }
+.exam-timer.danger { color: var(--danger); border-color: rgba(255,77,109,0.5); animation: pulse 1s infinite; }
+
+.palette-wrap { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px dashed var(--border); }
+.palette-label {
+  font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
+  letter-spacing: 0.06em; margin-bottom: 0.5rem;
+}
+.palette {
+  display: grid; grid-template-columns: repeat(15, 1fr); gap: 0.3rem;
+}
+@media (max-width: 760px) { .palette { grid-template-columns: repeat(10, 1fr); } }
+@media (max-width: 480px) { .palette { grid-template-columns: repeat(6, 1fr); } }
+.pal-cell {
+  background: var(--panel-2); border: 1px solid var(--border); color: var(--muted);
+  font-family: var(--mono); font-size: 0.72rem; padding: 0.3rem 0; border-radius: 3px;
+  cursor: pointer; transition: all 0.12s ease; text-align: center;
+}
+.pal-cell:hover { border-color: var(--accent); color: var(--accent); }
+.pal-cell.answered { background: rgba(0,212,255,0.08); color: var(--accent); border-color: rgba(0,212,255,0.35); }
+.pal-cell.current { box-shadow: 0 0 0 1px var(--accent); color: var(--accent); }
+.pal-cell.current.answered { background: rgba(0,212,255,0.15); }
+
+/* Result · domain breakdown */
+.domain-h { margin: 1.4rem 0 0.7rem 0; font-size: 1.05rem; }
+.domain-list { display: flex; flex-direction: column; gap: 0.45rem; }
+.domain-row {
+  display: grid; grid-template-columns: 1fr 1fr auto; gap: 0.5rem 0.9rem;
+  align-items: center; padding: 0.55rem 0.75rem;
+  background: var(--panel-2); border: 1px solid var(--border); border-radius: 4px;
+}
+.domain-meta { display: flex; align-items: center; gap: 0.6rem; min-width: 0; }
+.domain-code { font-family: var(--mono); color: var(--accent); font-weight: 700; font-size: 0.78rem; min-width: 2.2rem; }
+.domain-name { color: var(--text); font-size: 0.92rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.domain-status {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em;
+  padding: 0.1rem 0.4rem; border-radius: 3px; border: 1px solid var(--border);
+}
+.domain-status.strong { color: var(--accent-2); border-color: rgba(125,255,177,0.4); }
+.domain-status.adequate { color: var(--info); border-color: rgba(110,193,255,0.4); }
+.domain-status.weak { color: var(--danger); border-color: rgba(255,77,109,0.45); }
+.domain-bar { height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+.domain-bar > span { display: block; height: 100%; background: var(--accent); }
+.domain-row.adequate .domain-bar > span { background: var(--info); }
+.domain-row.weak .domain-bar > span { background: var(--danger); }
+.domain-row.strong .domain-bar > span { background: var(--accent-2); }
+.domain-score { font-family: var(--mono); color: var(--muted); font-size: 0.82rem; white-space: nowrap; }
+@media (max-width: 720px) {
+  .domain-row { grid-template-columns: 1fr; }
+  .domain-name { white-space: normal; }
+}
+
+.result-banner.warn {
+  background: rgba(255,180,84,0.08); color: var(--warn);
+  border-left: 2px solid var(--warn);
+}
+.report-status {
+  margin: 0.8rem 0 0; padding: 0.55rem 0.8rem;
+  background: rgba(255,255,255,0.02); border: 1px dashed var(--border);
+  border-radius: 3px; font-family: var(--mono); font-size: 0.84rem;
+  min-height: 1.2em;
+}
+.report-status.info { color: var(--info); }
+.report-status.ok { color: var(--accent-2); border-color: rgba(125,255,177,0.35); }
+.report-status.warn { color: var(--warn); }
