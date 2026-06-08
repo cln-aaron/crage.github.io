@@ -11,7 +11,7 @@
 //   - A structured report (name, email, score, per-module, weak domains) is
 //     auto-POSTed to Formspree for the instructor.
 (() => {
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mpqedpej';
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xrevqoen';
   const Q = window.PRECLASS_QUESTIONS || [];
   const META = window.PRECLASS_META || { durationMinutes: 60, weakDomainPct: 60, modules: {} };
   const DURATION_MS = META.durationMinutes * 60 * 1000;
