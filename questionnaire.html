@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRAGE Masterclass · Pre-Class Questionnaire</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="form-body">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">[CRAGE]</span>
+      <span class="title">Masterclass Portal</span>
+      <span class="subtitle">// pre-class questionnaire</span>
+    </div>
+    <div class="status">
+      <a href="index.html" class="ghost-btn small">EXIT</a>
+    </div>
+  </header>
+
+  <main class="form-main">
+
+    <div class="form-intro">
+      <h1>Pre-Class Questionnaire</h1>
+      <p>
+        Help your trainer tailor the CRAGE Masterclass to the room. This takes about 5&ndash;7 minutes.
+        Answer honestly &mdash; there are no wrong answers, and the depth questions simply help calibrate the sessions.
+        All responses go straight to the instructor.
+      </p>
+    </div>
+
+    <!--
+      ========================= INSTRUCTOR SETUP =========================
+      This form is powered by Formspree. Replace YOUR_FORM_ID below with
+      your own Formspree form ID (create a form at https://formspree.io
+      and copy the endpoint, e.g. https://formspree.io/f/xayzwabc).
+      Until you do, submissions will not be delivered.
+      ====================================================================
+    -->
+    <form id="preclass-form" class="qform"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST">
+
+      <input type="hidden" name="_subject" value="CRAGE Masterclass · Pre-Class Questionnaire submission">
+
+      <!-- Identity -->
+      <fieldset class="qsection">
+        <legend>About you</legend>
+
+        <div class="qfield">
+          <label for="name">Full name <span class="req">*</span></label>
+          <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name">
+        </div>
+
+        <div class="qfield">
+          <label for="email">Email address <span class="req">*</span></label>
+          <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+        </div>
+
+        <div class="qfield">
+          <label for="org">Q1 &middot; Your current role &amp; organisation <span class="req">*</span></label>
+          <input type="text" id="org" name="Q1_role_org" required placeholder="e.g. GRC Manager, Acme Bank">
+          <p class="qhint">Tells the trainer your professional context.</p>
+        </div>
+      </fieldset>
+
+      <!-- Experience -->
+      <fieldset class="qsection">
+        <legend>Experience &amp; background</legend>
+
+        <div class="qfield">
+          <label>Q2 &middot; Years of hands-on experience working with AI / ML systems <span class="req">*</span></label>
+          <div class="qradios">
+            <label><input type="radio" name="Q2_years_ai" value="None — brand new to AI" required> None &mdash; brand new to AI</label>
+            <label><input type="radio" name="Q2_years_ai" value="Less than 1 year"> Less than 1 year</label>
+            <label><input type="radio" name="Q2_years_ai" value="1–3 years"> 1&ndash;3 years</label>
+            <label><input type="radio" name="Q2_years_ai" value="3–5 years"> 3&ndash;5 years</label>
+            <label><input type="radio" name="Q2_years_ai" value="5+ years"> 5+ years</label>
+          </div>
+        </div>
+
+        <div class="qfield">
+          <label>Q3 &middot; Which best describe your professional / computing background? <span class="req">*</span> <span class="qhint-inline">(tick all that apply)</span></label>
+          <div class="qchecks">
+            <label><input type="checkbox" name="Q3_background" value="Software engineering / development"> Software engineering / development</label>
+            <label><input type="checkbox" name="Q3_background" value="Data science / ML engineering"> Data science / ML engineering</label>
+            <label><input type="checkbox" name="Q3_background" value="Cybersecurity"> Cybersecurity</label>
+            <label><input type="checkbox" name="Q3_background" value="Risk / GRC / compliance"> Risk / GRC / compliance</label>
+            <label><input type="checkbox" name="Q3_background" value="Legal / privacy"> Legal / privacy</label>
+            <label><input type="checkbox" name="Q3_background" value="Product / programme management"> Product / programme management</label>
+            <label><input type="checkbox" name="Q3_background" value="Executive / leadership"> Executive / leadership</label>
+            <label><input type="checkbox" name="Q3_background" value="Audit"> Audit</label>
+            <label><input type="checkbox" name="Q3_background" value="Academia / research"> Academia / research</label>
+            <label><input type="checkbox" name="Q3_background" value="Non-technical / business"> Non-technical / business</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Technical depth -->
+      <fieldset class="qsection">
+        <legend>Understanding of AI</legend>
+
+        <div class="qfield">
+          <label>Q4 &middot; How would you rate your technical understanding of how modern AI (LLMs / foundation models) actually work? <span class="req">*</span></label>
+          <div class="qscale">
+            <label><input type="radio" name="Q4_technical_depth" value="1 — No real idea how they work" required><span>1</span><small>No real idea</small></label>
+            <label><input type="radio" name="Q4_technical_depth" value="2 — I can use them but not explain them"><span>2</span><small>Can use, can't explain</small></label>
+            <label><input type="radio" name="Q4_technical_depth" value="3 — I understand the concepts at a high level"><span>3</span><small>High-level concepts</small></label>
+            <label><input type="radio" name="Q4_technical_depth" value="4 — I understand training, tokens, embeddings, fine-tuning"><span>4</span><small>Solid working knowledge</small></label>
+            <label><input type="radio" name="Q4_technical_depth" value="5 — I build / fine-tune / deploy them myself"><span>5</span><small>I build them</small></label>
+          </div>
+        </div>
+
+        <div class="qfield">
+          <label for="q5">Q5 &middot; In your own words, what is "agentic AI", and how does it differ from a normal chatbot or LLM? <span class="req">*</span></label>
+          <textarea id="q5" name="Q5_agentic_ai_explain" rows="4" required placeholder="A few sentences in your own words — it's fine to say 'not sure'."></textarea>
+          <p class="qhint">Free text. The trainer uses this to gauge genuine understanding, not to grade you.</p>
+        </div>
+
+        <div class="qfield">
+          <label>Q6 &middot; Which of these have you actually used or built with? <span class="req">*</span> <span class="qhint-inline">(tick all that apply)</span></label>
+          <div class="qchecks">
+            <label><input type="checkbox" name="Q6_hands_on" value="Prompting tools like ChatGPT / Claude"> Prompting tools (ChatGPT, Claude, etc.)</label>
+            <label><input type="checkbox" name="Q6_hands_on" value="Retrieval-Augmented Generation (RAG)"> Retrieval-Augmented Generation (RAG)</label>
+            <label><input type="checkbox" name="Q6_hands_on" value="Fine-tuning / LoRA"> Fine-tuning / LoRA</label>
+            <label><input type="checkbox" name="Q6_hands_on" value="Building AI agents / tool-use / orchestration"> Building AI agents / tool-use</label>
+            <label><input type="checkbox" name="Q6_hands_on" value="Training models from scratch"> Training models from scratch</label>
+            <label><input type="checkbox" name="Q6_hands_on" value="MLOps / monitoring / deployment"> MLOps / monitoring / deployment</label>
+            <label><input type="checkbox" name="Q6_hands_on" value="None of these yet"> None of these yet</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Governance knowledge -->
+      <fieldset class="qsection">
+        <legend>AI governance, risk &amp; ethics</legend>
+
+        <div class="qfield">
+          <label>Q7 &middot; Which AI governance frameworks or regulations have you worked with or studied? <span class="req">*</span> <span class="qhint-inline">(tick all that apply)</span></label>
+          <div class="qchecks">
+            <label><input type="checkbox" name="Q7_frameworks" value="NIST AI Risk Management Framework"> NIST AI RMF</label>
+            <label><input type="checkbox" name="Q7_frameworks" value="ISO/IEC 42001"> ISO/IEC 42001</label>
+            <label><input type="checkbox" name="Q7_frameworks" value="EU AI Act"> EU AI Act</label>
+            <label><input type="checkbox" name="Q7_frameworks" value="GDPR / data protection law"> GDPR / data-protection law</label>
+            <label><input type="checkbox" name="Q7_frameworks" value="OECD AI Principles"> OECD AI Principles</label>
+            <label><input type="checkbox" name="Q7_frameworks" value="MITRE ATLAS / AI security frameworks"> MITRE ATLAS / AI security</label>
+            <label><input type="checkbox" name="Q7_frameworks" value="Sector rules (HIPAA, SR 11-7, FCRA, etc.)"> Sector rules (HIPAA, SR 11-7, FCRA&hellip;)</label>
+            <label><input type="checkbox" name="Q7_frameworks" value="None yet — this is new to me"> None yet &mdash; this is new to me</label>
+          </div>
+        </div>
+
+        <div class="qfield">
+          <label>Q8 &middot; How would you rate your understanding of AI governance, risk &amp; ethics? <span class="req">*</span></label>
+          <div class="qscale">
+            <label><input type="radio" name="Q8_governance_depth" value="1 — Completely new" required><span>1</span><small>Completely new</small></label>
+            <label><input type="radio" name="Q8_governance_depth" value="2 — Aware of the topic"><span>2</span><small>Aware of it</small></label>
+            <label><input type="radio" name="Q8_governance_depth" value="3 — Working knowledge"><span>3</span><small>Working knowledge</small></label>
+            <label><input type="radio" name="Q8_governance_depth" value="4 — I apply it in my role"><span>4</span><small>I apply it</small></label>
+            <label><input type="radio" name="Q8_governance_depth" value="5 — I design / lead governance programmes"><span>5</span><small>I lead it</small></label>
+          </div>
+        </div>
+
+        <div class="qfield">
+          <label for="q9">Q9 &middot; A model that performed well in testing starts producing noticeably worse results months after deployment &mdash; even though nobody changed the code. What do you think is happening, and what would you do about it? <span class="req">*</span></label>
+          <textarea id="q9" name="Q9_drift_scenario" rows="4" required placeholder="Your best answer — 'not sure' is a perfectly valid response."></textarea>
+          <p class="qhint">A depth check. There's a 'textbook' answer, but the trainer mainly wants to see how you reason.</p>
+        </div>
+      </fieldset>
+
+      <!-- Goals -->
+      <fieldset class="qsection">
+        <legend>Your goals</legend>
+        <div class="qfield">
+          <label for="q10">Q10 &middot; What is the biggest AI governance / ethics challenge you face (or expect to face), and what do you most want to get out of this masterclass? <span class="req">*</span></label>
+          <textarea id="q10" name="Q10_goals" rows="4" required placeholder="Tell the trainer what success looks like for you."></textarea>
+        </div>
+      </fieldset>
+
+      <div class="qsubmit-row">
+        <button type="submit" class="ghost-btn submit-btn">SUBMIT QUESTIONNAIRE &rarr;</button>
+        <a href="index.html" class="ghost-btn">Cancel</a>
+      </div>
+      <div class="qform-status" id="qform-status"></div>
+    </form>
+
+  </main>
+
+  <footer class="footnote">
+    CRAGE Masterclass Portal &middot; &copy; <a class="credit-link" href="https://www.linkedin.com/in/aaronangsg/" target="_blank" rel="noopener">Aaron Ang</a>
+  </footer>
+
+  <script>
+  // Progressive enhancement: AJAX submit so students stay on a friendly
+  // confirmation screen instead of Formspree's default page. Falls back to
+  // a normal POST if fetch/JSON is unavailable.
+  (() => {
+    const form = document.getElementById('preclass-form');
+    const status = document.getElementById('qform-status');
+    form.addEventListener('submit', async (e) => {
+      if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
+        e.preventDefault();
+        status.textContent = '⚠ This form is not yet connected. Instructor: set your Formspree form ID in questionnaire.html.';
+        status.className = 'qform-status warn';
+        return;
+      }
+      e.preventDefault();
+      status.textContent = 'Sending…';
+      status.className = 'qform-status info';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' },
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          status.innerHTML = '✓ Thank you! Your questionnaire has been sent to the trainer. ' +
+            '<a class="credit-link" href="index.html">Back to the portal →</a>';
+          status.className = 'qform-status ok';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          status.textContent = '✗ Something went wrong. Please try again, or email the trainer directly.';
+          status.className = 'qform-status danger';
+        }
+      } catch (err) {
+        status.textContent = '✗ Network error. Please check your connection and try again.';
+        status.className = 'qform-status danger';
+      }
+    });
+  })();
+  </script>
+</body>
+</html>

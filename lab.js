@@ -27,7 +27,7 @@
   }
 
   // Title bar
-  document.title = 'CRAGE Lab · ' + lab.id.toUpperCase() + ' · ' + lab.title;
+  document.title = 'CRAGE Masterclass · ' + lab.id.toUpperCase() + ' · ' + lab.title;
   titleBar.textContent = lab.title;
   subBar.textContent = '// Module ' + lab.module + ' · ' + lab.id.toUpperCase();
 
